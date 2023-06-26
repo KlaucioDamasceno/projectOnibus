@@ -1,10 +1,13 @@
 package br.com.projet.onibus.rota;
 
+import br.com.projet.onibus.onibus.Onibus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 
 @Entity(name="rotas")
@@ -31,11 +34,7 @@ public class Rota {
     @Enumerated(EnumType.STRING)
     private Origem destino;
 
-
     private boolean viagem;
-
-    //@OneToMany
-    //private Onibus onibus;
 
     private int quantidade_passageiros;
 

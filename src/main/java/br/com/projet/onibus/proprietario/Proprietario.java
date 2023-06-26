@@ -43,20 +43,14 @@ public class Proprietario {
     public void atualizarInformacoes(DadosAtualizaProprietario dados) {
 
         if (dados.nome() != null ) {
-
             this.nome = dados.nome();
-
-        }   if (dados.cpf() != null) {
-
-            this.cpf = dados.cpf();
-
-        }  if (dados.telefone() != null){
-            this.telefone = dados.telefone();
-
         }
-
-
-
+        if (dados.cpf() != null) {
+            this.cpf = dados.cpf();
+        }
+        if (dados.telefone() != null){
+            this.telefone = dados.telefone();
+        }
     }
     public void excluir(){
         this.ativo = false;
