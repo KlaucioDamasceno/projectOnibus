@@ -1,5 +1,8 @@
 package br.com.projet.onibus.onibus;
 
+import br.com.projet.onibus.endereco.Endereco;
+import br.com.projet.onibus.rota.DadosAtualizacaoRota;
+import br.com.projet.onibus.rota.DadosCadastroRota;
 import br.com.projet.onibus.rota.Rota;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,7 +26,7 @@ public class Onibus {
     private String placa;
     private String fabricante;
     private String ano;
-    private int capacidade;
+    private String capacidade;
 
 
     @ManyToOne
@@ -41,6 +44,45 @@ public class Onibus {
         this.fabricante = dados.fabricante();
         this.ano = dados.ano();
         this.capacidade = dados.capacidade();
-        this.rota = dados.rota();
+    }
+
+    public Onibus(DadosCadastroOnibus dados, Rota rota) {
+        this.viagem = true;
+        this.modelo = dados.modelo();
+        this.renavam = dados.renavam();
+        this.placa = dados.placa();
+        this.fabricante = dados.fabricante();
+        this.ano = dados.ano();
+        this.capacidade = dados.capacidade();
+        this.rota = rota;
+    }
+
+    public void atualizarInformacoes(DadosAtualizaOnibus dados, Rota rota) {
+        if (dados.modelo() != null ) {
+            this.modelo = dados.modelo();
+        }
+        if (dados.renavam() != null) {
+            this.renavam = dados.renavam();
+        }
+        if (dados.placa() != null){
+            this.placa = dados.placa();
+        }
+
+        if (dados.fabricante() != null ) {
+            this.fabricante = dados.fabricante();
+        }
+        if (dados.ano() != null) {
+            this.ano = dados.ano();
+        }
+        if (dados.capacidade() != null){
+            this.capacidade = dados.capacidade();
+        }
+        if (rota != null){
+            this.rota = rota;
+        }
+    }
+
+    public void excluir() {
+        this.viagem = false;
     }
 }

@@ -12,7 +12,5 @@ public record DadosCadastrarProprietario(
         @NotBlank
         String cpf,
 
-        String telefone,
-
-        DadosEndereco endereco) {
+        String telefone) {
 }

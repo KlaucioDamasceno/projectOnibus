@@ -238,3 +238,39 @@ input[type="submit"] {
   text-transform: uppercase;
   cursor: pointer;
 }
+
+.menu{
+    margin: auto;
+    list-style:none;
+    float:left;
+    align-items: center;
+}
+.menu li{
+    position:relative;
+    float:center;
+}
+.menu li a{color:#333; text-decoration:none; padding:5px 10px; display:block;}
+
+.menu li a:hover{
+    color:white;
+    -moz-box-shadow:0 3px 10px 0 #CCC;
+    -webkit-box-shadow:0 3px 10px 0 #ccc;
+    text-shadow:0px 0px 5px #fff;
+}
+
+.menu li  ul{
+    position:absolute;
+    top:25px;
+    left:0;
+    background-color:#fff;
+    display:none;
+}
+
+.selector{
+    width: 50vw;
+    border-radius: 24px;
+    display: block;
+    color: black;
+    padding: 1em
+
+}

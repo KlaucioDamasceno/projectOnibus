@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,7 +25,7 @@ public class Rota {
     private String linha;
     private String cidade;
 
-    private String valor_passagem;
+    private String valorpassagem;
 
     private String caixa;
 
@@ -36,24 +37,49 @@ public class Rota {
 
     private boolean viagem;
 
-    private int quantidade_passageiros;
+    private int quantidadepassageiros;
+
+    @OneToMany
+    private List<Onibus> onibus;
 
     public Rota(DadosCadastroRota dados) {
         this.viagem = true;
         this.linha = dados.linha();
         this.cidade = dados.cidade();
-        this.valor_passagem = dados.valor_passagem();
+        this.valorpassagem = dados.valorpassagem();
         this.caixa = dados.caixa();
         this.origem = dados.origem();
         this.destino = dados.destino();
-        this.quantidade_passageiros = dados.quantidade_passageiros();
+        this.quantidadepassageiros = dados.quantidadepassageiros();
+        this.onibus = new ArrayList<>();
     }
 
     public void atualizarInformacoes(DadosAtualizacaoRota dados) {
-       this.quantidade_passageiros = dados.quantidade_passageiros() > 0 ? dados.quantidade_passageiros() : getQuantidade_passageiros();
+       this.quantidadepassageiros = dados.quantidadepassageiros() > 0 ? dados.quantidadepassageiros() : getQuantidadepassageiros();
+
+        if (dados.linha() != null ) {
+            this.linha = dados.linha();
+        }
+        if (dados.cidade() != null) {
+            this.cidade = dados.cidade();
+        }
+        if (dados.valorpassagem() != null){
+            this.valorpassagem = dados.valorpassagem();
+        }
+        if (dados.caixa() != null){
+            this.caixa = dados.caixa();
+        }
+
+        if (dados.origem() != null){
+            this.origem = dados.origem();
+        }
+        if (dados.destino() != null){
+            this.destino = dados.destino();
+        }
     }
 
     public void delete() {
         this.viagem = false;
     }
+
 }

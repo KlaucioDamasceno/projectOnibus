@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title> Lista de Rotas</title>
+</head>
+<body>
+
+<div layout:fragment="conteudo">
+
+    <h1> Lista de Rotas</h1>
+    <a href="#" th:href="@{/viewrotas/formulario}">Novo</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Caixa Inicial(R$)</th>
+            <th>Cidade</th>
+            <th>Linha</th>
+            <th>Origem</th>
+            <th>Destino</th>
+            <th> AÇÕES</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="rota :${lista} ">
+            <td th:text="${rota.caixa}"></td>
+            <td th:text="${rota.cidade}"></td>
+            <td th:text="${rota.linha}"></td>
+            <td th:text="${rota.origem}"></td>
+            <td th:text="${rota.destino}"></td>
+            <td>
+                <a th:href="@{/viewrotas/formulario?id={id}(id=${rota.id})}"> Editar </a>
+                <form action="/viewrotas" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" name="id" th:value="${rota.id}">
+                    <input type="submit" value="Excluir">
+                </form>
+
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+
+</div>
+
+
+</body>
+</html>

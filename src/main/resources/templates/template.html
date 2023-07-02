@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/estilo.css" th:href="@{/css/estilo.css}">
+
+</head>
+<body>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#" th:href="@{./viewonibus}">Ônibus</a></li>
+                <li><a href="#" th:href="@{/viewproprietarios}">Proprietários</a></li>
+                <li><a href="#" th:href="@{./viewempresas}">Empresa</a></li>
+                <li><a href="#" th:href="@{/viewrotas}">Rotas</a></li>
+            </ul>
+        </nav>
+
+
+    <div layout:fragment="conteudo"></div>
+</body>
+</html>

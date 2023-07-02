@@ -25,9 +25,6 @@ public class Proprietario {
     private String email;
     private String telefone;
 
-    @Embedded
-    private Endereco endereco;
-
 
     private boolean ativo = true;
 
@@ -37,7 +34,6 @@ public class Proprietario {
         this.cpf = dados.cpf();
         this.email = dados.email();
         this.telefone = dados.telefone();
-        this.endereco = new Endereco(dados.endereco());
     }
 
     public void atualizarInformacoes(DadosAtualizaProprietario dados) {

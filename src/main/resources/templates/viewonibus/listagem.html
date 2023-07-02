@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title> Lista de Ônibus</title>
+</head>
+<body>
+
+<div layout:fragment="conteudo">
+
+    <h1> Lista de Ônibus</h1>
+    <a href="#" th:href="@{/viewonibus/formulario}">Novo</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>MODELO</th>
+            <th>FABRICANTE</th>
+            <th>PLACA</th>
+            <th>CAPACIDADE</th>
+            <th>ANO</th>
+            <th>LINHA</th>
+            <th>ORIGEM</th>
+            <th>DESTINO</th>
+            <th> AÇÕES</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="onibus :${lista} ">
+            <td th:text="${onibus.modelo}"></td>
+            <td th:text="${onibus.fabricante}"></td>
+            <td th:text="${onibus.placa}"></td>
+            <td th:text="${onibus.capacidade}"></td>
+            <td th:text="${onibus.ano}"></td>
+            <td th:text="${onibus.rota.linha}"></td>
+            <td th:text="${onibus.rota.origem}"></td>
+            <td th:text="${onibus.rota.destino}"></td>
+            <td>
+                <a th:href="@{/viewonibus/formulario?id={id}(id=${onibus.id})}"> Editar </a>
+                <form action="/viewonibus" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" name="id" th:value="${onibus.id}">
+                    <input type="submit" value="Excluir">
+                </form>
+
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+
+</div>
+
+
+</body>
+</html>

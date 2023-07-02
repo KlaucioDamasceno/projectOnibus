@@ -7,8 +7,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 public record DadosCadastroEmpresa(
-
-
         @NotBlank
         String nome_fantasia,
 
@@ -19,8 +17,6 @@ public record DadosCadastroEmpresa(
         String cnpj,
 
         @NotBlank
-        String telefone,
-
-        @NotNull @Valid
-        DadosEndereco endereco) {
+        String telefone
+        ) {
 }

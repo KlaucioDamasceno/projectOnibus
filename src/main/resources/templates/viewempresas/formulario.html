@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+  <title>Cadastro de Empresa </title>
+</head>
+<div layout:fragment="conteudo">
+  <h1>Cadastro de Empresa</h1>
+  <form action="/viewempresas" method="POST">
+
+
+    <input type="hidden" name="_method" value="put" th:if="${empresa != null}">
+    <input type="hidden" name="id"  th:value="${empresa?.id}">
+
+    <div>
+      <label for="nome_fantasia">Nome Fantasia:</label>
+      <input type="text" id="nome_fantasia" name="nome_fantasia"    th:value="${empresa?.nome_fantasia}" required>
+    </div>
+
+    <div>
+      <label for="cnpj">CNPJ:</label>
+      <input type="text" id="cnpj" name="cnpj"    th:value="${empresa?.cnpj}" required>
+    </div>>
+
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email"    th:value="${empresa?.email}" required>
+    </div>
+
+    <div>
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" name="telefone"    th:value="${empresa?.telefone}" required>
+    </div>
+
+      <div>
+          <label for="bairro">Bairro:</label>
+          <input type="text" id="bairro" name="bairro"    th:value="${endereco?.bairro}" required>
+      </div>
+
+      <div>
+          <label for="cep">CEP:</label>
+          <input type="text" id="cep" name="cep"    th:value="${endereco?.cep}" required>
+      </div>
+
+      <div>
+          <label for="cidade">Cidade:</label>
+          <input type="text" id="cidade" name="cidade"    th:value="${endereco?.cidade}" required>
+      </div>
+
+      <div>
+          <label for="complemento">Complemento:</label>
+          <input type="text" id="complemento" name="complemento"    th:value="${endereco?.complemento}" required>
+      </div>
+
+      <div>
+          <label for="logradouro">Logradouro:</label>
+          <input type="text" id="logradouro" name="logradouro"    th:value="${endereco?.logradouro}" required>
+      </div>
+      <div>
+          <label for="numero">Número:</label>
+          <input type="text" id="numero" name="numero"    th:value="${endereco?.numero}" required>
+      </div>
+      <div>
+          <label for="uf">UF:</label>
+          <input type="text" id="uf" name="uf"    th:value="${endereco?.uf}" required>
+      </div>
+
+      <input type="submit" value="Salvar">
+  </form>
+</div>
+</body>
+</html>

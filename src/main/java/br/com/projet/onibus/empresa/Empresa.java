@@ -1,7 +1,9 @@
 package br.com.projet.onibus.empresa;
 
 
+import br.com.projet.onibus.endereco.DadosEndereco;
 import br.com.projet.onibus.endereco.Endereco;
+import br.com.projet.onibus.onibus.DadosCadastroOnibus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -35,15 +37,35 @@ public class Empresa {
         this.email = dados.email();
         this.cnpj = dados.cnpj();
         this.telefone = dados.telefone();
-        this.endereco = new Endereco(dados.endereco());
         this.ativo = true;
     }
 
+    public Empresa(DadosCadastroEmpresa dados, DadosEndereco newEndereco) {
+        this.nome_fantasia = dados.nome_fantasia();;
+        this.email = dados.email();
+        this.cnpj = dados.cnpj();
+        this.telefone = dados.telefone();
+        this.ativo = true;
+        this.endereco = new Endereco(newEndereco);
+    }
+
     public void atualizarInformacoes(DadosAtualizacaoEmpresa dados) {
-        //String nome_fantasia, String telefone, String cnpj
         this.nome_fantasia = dados.nome_fantasia() != null ? dados.nome_fantasia() : getNome_fantasia();
         this.telefone = dados.telefone() != null ? dados.telefone() : getTelefone();
         this.cnpj = dados.cnpj() != null ? dados.cnpj() : getCnpj();
+
+    }
+
+    public void atualizarInformacoes(DadosAtualizacaoEmpresa dados, DadosEndereco newEndereco) {
+        this.nome_fantasia = dados.nome_fantasia() != null ? dados.nome_fantasia() : getNome_fantasia();
+        this.telefone = dados.telefone() != null ? dados.telefone() : getTelefone();
+        this.cnpj = dados.cnpj() != null ? dados.cnpj() : getCnpj();
+        this.email = dados.email() != null ? dados.email() : getEmail();
+
+        if(newEndereco != null){
+            this.endereco = new Endereco(newEndereco);
+        }
+
     }
 
 

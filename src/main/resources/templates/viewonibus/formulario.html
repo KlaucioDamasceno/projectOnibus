@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Cadastro de Ônibus</title>
+</head>
+<div layout:fragment="conteudo">
+    <h1>Cadastro de Ônibus</h1>
+    <form action="/viewonibus" method="POST">
+
+        <input type="hidden" name="_method" value="put" th:if="${onibus != null}">
+        <input type="hidden" name="id"  th:value="${onibus?.id}">
+
+
+        <div>
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo" name="modelo"    th:value="${onibus?.modelo}" required>
+        </div>
+
+        <div>
+            <label for="renavam">Renavam:</label>
+            <input type="text" id="renavam" name="renavam"    th:value="${onibus?.renavam}" required>
+        </div>>
+
+        <div>
+            <label for="placa">Placa:</label>
+            <input type="text" id="placa" name="placa"    th:value="${onibus?.placa}" required>
+        </div>
+
+        <div>
+            <label for="fabricante">Fabricante:</label>
+            <input type="text" id="fabricante" name="fabricante"    th:value="${onibus?.fabricante}" required>
+        </div>
+
+        <div>
+            <label for="ano">Ano:</label>
+            <input type="text" id="ano" name="ano"    th:value="${onibus?.ano}" required>
+        </div>
+
+        <div>
+            <label for="capacidade">Capacidade:</label>
+            <input type="text" id="capacidade" name="capacidade"    th:value="${onibus?.capacidade}" required>
+        </div>
+        <div>
+            <label>Selecione a Rota:</label>
+            <select class="selector" id="rotaid" name="rotaid">
+                <option value="" text="selecione"></option>
+                <option th:each="r : ${rotas}" th:value="${r.id}" th:text="${r.linha}"></option>
+            </select>
+        </div>
+
+        <input type="submit" value="Salvar">
+    </form>
+</div>
+</body>
+</html>

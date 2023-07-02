@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+  <title>Cadastro de Rota </title>
+</head>
+<div layout:fragment="conteudo">
+  <h1>Cadastro de Rato</h1>
+  <form action="/viewrotas" method="POST">
+
+    <input type="hidden" name="_method" value="put" th:if="${rota != null}">
+    <input type="hidden" name="id"  th:value="${rota?.id}">
+
+    <div>
+      <label for="linha">Linha:</label>
+      <input type="text" id="linha" name="linha"    th:value="${rota?.linha}" required>
+    </div>
+
+    <div>
+      <label for="cidade">Cidade:</label>
+      <input type="text" id="cidade" name="cidade"    th:value="${rota?.cidade}" required>
+    </div>>
+
+    <div>
+      <label for="caixa">Caixa Inicial:</label>
+      <input type="text" id="caixa" name="caixa"    th:value="${rota?.caixa}" required>
+    </div>
+
+    <div>
+      <label for="valorpassagem">Valor da Passagem(R$):</label>
+      <input type="text" id="valorpassagem" name="valorpassagem"  th:value="${rota?.valorpassagem}" required>
+    </div>
+
+    <div>
+        <label>Selecione a Origem:</label>
+        <select class="selector"  id="origem" name="origem">
+            <option value="CRUZEIRO">CRUZEIRO</option>
+            <option value="BRAZLÂNDIA" >BRAZLÂNDIA</option>
+            <option value="TAGUATINGA" >TAGUATINGA</option>
+            <option value="RODOVIÁRIA" >RODOVIÁRIA</option>
+        </select>
+    </div>
+
+    <div>
+      <label>Selecione a Destino:</label>
+      <select class="selector" id="destino" name="destino">
+        <option value="CRUZEIRO" text="CRUZEIRO">CRUZEIRO</option>
+        <option value="BRAZLÂNDIA" text="BRAZLÂNDIA">BRAZLÂNDIA</option>
+        <option value="TAGUATINGA" text="TAGUATINGA">TAGUATINGA</option>
+        <option value="RODOVIÁRIA" text="RODOVIÁRIA">RODOVIÁRIA</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="quantidadepassageiros">Quantidade de Passageiros:</label>
+      <input type="text" id="quantidadepassageiros" name="quantidadepassageiros" th:value="${rota?.quantidadepassageiros}" required>
+    </div>
+
+    <input type="submit" value="Salvar">
+  </form>
+</div>
+</body>
+</html>

@@ -6,11 +6,11 @@ public record DadosCadastroRota(
 
         String caixa,
 
-        String valor_passagem,
+        String valorpassagem,
 
         Origem origem,
 
         Origem destino,
 
-        int quantidade_passageiros) {
+        int quantidadepassageiros) {
 }

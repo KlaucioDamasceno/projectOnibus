@@ -3,14 +3,14 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{template.html}">
 <head>
-    <title> Lista de filmes</title>
+    <title> Lista de Proprietários</title>
 </head>
 <body>
 
 <div layout:fragment="conteudo">
 
     <h1> Lista de Proprietários</h1>
-    <a href="/proprietarios/formulario">Novo</a>
+    <a href="#" th:href="@{/viewproprietarios/formulario}">Novo</a>
 
     <table>
         <thead>
@@ -28,8 +28,8 @@
             <td th:text="${proprietario.nome}"></td>
             <td th:text="${proprietario.cpf}"></td>
             <td>
-                <a th:href="@{/proprietarios/formulario?id={id}(id=${proprietario.id})}"> Editar </a>
-                <form action="/proprietarios" method="post">
+                <a th:href="@{/viewproprietarios/formulario?id={id}(id=${proprietario.id})}"> Editar </a>
+                <form action="/viewproprietarios" method="post">
                     <input type="hidden" name="_method" value="delete">
                     <input type="hidden" name="id" th:value="${proprietario.id}">
                     <input type="submit" value="Excluir">
